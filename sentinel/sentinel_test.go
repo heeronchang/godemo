@@ -72,6 +72,7 @@ func TestSentinel(tt *testing.T) {
 					log.Println("will sleep x millsecond.")
 					// 请求被拒绝，在此处进行处理
 					time.Sleep(time.Duration(rand.Uint64()%10) * time.Millisecond)
+					// block 不需要 Exit()
 				} else {
 					// 请求允许通过，此处编写业务逻辑
 					resp, err := resty.New().R().Get("http://localhost:8080/ping")
